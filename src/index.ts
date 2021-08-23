@@ -36,7 +36,13 @@ const prompts = require('prompts');
 
             if (ennemy.life > 0)
             {
-                //riposte
+                ennemy.attack(character);
+
+                if (character.life == 0)
+                {
+                    console.log('Vous avez perdu !')
+                    estCombat = false;
+                }
             }
             else
             {

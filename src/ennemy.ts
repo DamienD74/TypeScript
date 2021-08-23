@@ -15,7 +15,7 @@ export class Ennemy {
     {
         let damage = Math.floor(Math.random() * 100) + 1;
         console.log('Dégat : ' + damage);
-        character.life -= damage;
+        character.life -= damage / 2;
 
         if (character.life < 0)
         {

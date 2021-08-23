@@ -1,16 +1,25 @@
 import { Fighter } from "./Fighter";
 
-export class Character implements Fighter{
+export abstract class Character implements Fighter{
     
     name: string;
     gender: string;
+    classWarrior: string;
     life: number;
 
-    constructor(name: string, gender: string)
+    constructor(name: string, gender: string, classWarrior:string)
     {
         this.name = name;
         this.gender = gender;
-        this.life = 200;
+        this.classWarrior = classWarrior;
+        if (classWarrior == "Guerrier")
+        {
+            this.life = 240;
+        }
+        else
+        {
+            this.life = 200;
+        }
     }
 
     summary()
@@ -21,9 +30,12 @@ export class Character implements Fighter{
     attack()
     {
         let damage = Math.floor(Math.random() * 100) + 1;
+        if (this.classWarrior == 'Magicien')
+        {
+            damage *= 1.2;
+        }
         console.log('Dégat : ' + damage);
         return damage;
-
     }
 
     takeDamage(damage:number)

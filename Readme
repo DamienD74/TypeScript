@@ -1,5 +1,9 @@
 Question :
 
-Que signifie l'option --save-dev ?
+2 - Que signifie l'option --save-dev ?
 
 Permet d'enregistrer le package pour une utilisation dans le développement.
+
+3 - Que signifie cette commande ? 
+
+Elle permet de construire le code et de le compiler pour qu'il soit lisible par les navigateurs

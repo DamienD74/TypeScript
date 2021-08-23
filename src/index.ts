@@ -1,5 +1,5 @@
-import { Character } from "./character";
-import { Ennemy } from "./ennemy";
+import { Character } from "./Character";
+import { Ennemy } from "./Ennemy";
 
 const prompts = require('prompts');
 
@@ -32,11 +32,11 @@ const prompts = require('prompts');
 
         if (response.choice == "Combattre")
         {
-            character.attack(ennemy);
+            ennemy.takeDamage(character.attack());
 
             if (ennemy.life > 0)
             {
-                ennemy.attack(character);
+                character.takeDamage(ennemy.attack());
 
                 if (character.life == 0)
                 {

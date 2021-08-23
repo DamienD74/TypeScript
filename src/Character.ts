@@ -1,6 +1,6 @@
-import { Ennemy } from "./ennemy";
+import { Fighter } from "./Fighter";
 
-export class Character {
+export class Character implements Fighter{
     
     name: string;
     gender: string;
@@ -18,17 +18,23 @@ export class Character {
         console.log("Nom : " + this.name + "\nSexe : " + this.gender + "\nVie : " + this.life);
     }
 
-    attack(ennemy: Ennemy)
+    attack()
     {
         let damage = Math.floor(Math.random() * 100) + 1;
         console.log('Dégat : ' + damage);
-        ennemy.life -= damage;
+        return damage;
 
-        if (ennemy.life < 0)
+    }
+
+    takeDamage(damage:number)
+    {
+        this.life -= damage;
+
+        if (this.life < 0)
         {
-            ennemy.life = 0;
+            this.life = 0;
         }
         
-        console.log('Il reste ' + ennemy.life + ' point de vie à l\'ennemi');
+        console.log('Il vous reste ' + this.life + ' point de vie');
     }
 }

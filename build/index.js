@@ -36,13 +36,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Api_1 = require("./Api");
 var Arme_1 = require("./Arme");
 var Ennemy_1 = require("./Ennemy");
 var Guerrier_1 = require("./Guerrier");
 var Magicien_1 = require("./Magicien");
 var prompts = require('prompts');
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var response, estclassChoice, character, response2, estweaponChoice, arme, response3, estweaponChoice, arme, response3, estCombat, ennemy;
+    var response, estclassChoice, character, response2, estweaponChoice, arme, response3, estweaponChoice, arme, response3, estCombat, ennemy, nb;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, prompts([{
@@ -160,8 +161,14 @@ var prompts = require('prompts');
                     }
                 }
                 else if (response.choice == "Fuir") {
-                    console.log("Vous fuyez le combat");
-                    estCombat = false;
+                    nb = Math.floor(Math.random() * 100) + 1;
+                    if (nb > 80) {
+                        console.log("Vous fuyez le combat");
+                        estCombat = false;
+                    }
+                    else {
+                        Api_1.kaamelot();
+                    }
                 }
                 else {
                     console.log("Entrée invalide");

@@ -28,7 +28,7 @@ var Character = /** @class */ (function () {
         return damage;
     };
     Character.prototype.takeDamage = function (damage) {
-        this.life -= damage;
+        this.life -= damage / 2;
         if (this.life < 0) {
             this.life = 0;
         }

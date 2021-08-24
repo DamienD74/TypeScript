@@ -33,7 +33,7 @@ export abstract class Character implements Fighter{
         "\nArme : " + this.weapon + "\nMultiplicateur dégat : " + this.damageMultiplicater);
     }
 
-    attack()
+    attack() : number
     {
         let damage = (Math.floor(Math.random() * 100) + 1) * this.damageMultiplicater;
         if (this.classWarrior == 'Magicien')
@@ -46,7 +46,7 @@ export abstract class Character implements Fighter{
 
     takeDamage(damage:number)
     {
-        this.life -= damage;
+        this.life -= damage / 2;
 
         if (this.life < 0)
         {

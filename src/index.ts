@@ -1,3 +1,4 @@
+import { kaamelot } from "./Api";
 import { Arme } from "./Arme";
 import { Ennemy } from "./Ennemy";
 import { Guerrier } from "./Guerrier";
@@ -135,8 +136,16 @@ const prompts = require('prompts');
             }
             else if (response.choice == "Fuir")
             {
-                console.log("Vous fuyez le combat");
-                estCombat = false;
+                let nb = Math.floor(Math.random() * 100) + 1;
+                if (nb > 80)
+                {
+                    console.log("Vous fuyez le combat");
+                    estCombat = false;
+                }
+                else 
+                {
+                    kaamelot();
+                }
             }
             else
             {

@@ -1,3 +1,4 @@
+import { Arme } from "./Arme";
 import { Fighter } from "./Fighter";
 
 export abstract class Character implements Fighter{
@@ -6,8 +7,10 @@ export abstract class Character implements Fighter{
     gender: string;
     classWarrior: string;
     life: number;
+    weapon: string;
+    damageMultiplicater: number;
 
-    constructor(name: string, gender: string, classWarrior:string)
+    constructor(name: string, gender: string, classWarrior:string, arme : Arme)
     {
         this.name = name;
         this.gender = gender;
@@ -20,16 +23,19 @@ export abstract class Character implements Fighter{
         {
             this.life = 200;
         }
+        this.weapon = arme.name;
+        this.damageMultiplicater = arme.damage;
     }
 
     summary()
     {
-        console.log("Nom : " + this.name + "\nSexe : " + this.gender + "\nVie : " + this.life);
+        console.log("Nom : " + this.name + "\nClasse : " + this.classWarrior + "\nSexe : " + this.gender + "\nVie : " + this.life + 
+        "\nArme : " + this.weapon + "\nMultiplicateur dégat : " + this.damageMultiplicater);
     }
 
     attack()
     {
-        let damage = Math.floor(Math.random() * 100) + 1;
+        let damage = (Math.floor(Math.random() * 100) + 1) * this.damageMultiplicater;
         if (this.classWarrior == 'Magicien')
         {
             damage *= 1.2;

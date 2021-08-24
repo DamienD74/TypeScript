@@ -1,3 +1,4 @@
+import { Arme } from "./Arme";
 import { Ennemy } from "./Ennemy";
 import { Guerrier } from "./Guerrier";
 import { Magicien } from "./Magicien";
@@ -29,12 +30,64 @@ const prompts = require('prompts');
 
         if (response2.class == "Guerrier")
         {
-            character = new Guerrier(response.name, response.gender);
+            let estweaponChoice = true;
+            let arme = new Arme("Epée", 1);
+            
+            while (estweaponChoice)
+            {
+                let response3 = await prompts({
+                    type: 'text',
+                    name: 'weapon',
+                    message: 'Choisis ton arme \"Epée\" ou \"Massue\" ?'
+                });
+                
+                if (response3.weapon == "Epée")
+                {
+                    estweaponChoice = false;
+                }
+                else if (response3.weapon == "Massue")
+                {
+                    arme = new Arme("Massue", 1.2);
+                    estweaponChoice = false;
+                }
+                else
+                {
+                    console.log("Entrée invalide");
+                }
+            }
+
+            character = new Guerrier(response.name, response.gender, arme);
             estclassChoice = false;
         }
         else if (response2.class == "Magicien")
         {
-            character = new Magicien(response.name, response.gender);
+            let estweaponChoice = true;
+            let arme = new Arme("Feu", 1);
+
+            while (estweaponChoice)
+            {
+                let response3 = await prompts({
+                    type: 'text',
+                    name: 'weapon',
+                    message: 'Choisis ton arme \"Feu\" ou \"Foudre\" ?'
+                });
+                
+                if (response3.weapon == "Feu")
+                {
+                    estweaponChoice = false;
+                }
+                else if (response3.weapon == "Foudre")
+                {
+                    arme = new Arme("Foudre", 1.2);
+                    estweaponChoice = false;
+                }
+                else
+                {
+                    console.log("Entrée invalide");
+                }
+            }
+
+            character = new Magicien(response.name, response.gender, arme);
             estclassChoice = false;
         }
         else

@@ -7,7 +7,7 @@ import { Magicien } from "./Magicien";
 const prompts = require('prompts');
 
 (async () => {
-    let response = await prompts([{
+    let responseChoice = await prompts([{
         type: 'text',
         name: 'name',
         message: 'Quelle est ton nom ?'
@@ -23,30 +23,30 @@ const prompts = require('prompts');
 
     while (estclassChoice)
     {
-        let response2 = await prompts({
+        let responseClass = await prompts({
             type: 'text',
             name: 'class',
             message: 'Choisis ta classe \"Guerrier\" ou \"Magicien\" ?'
         });
 
-        if (response2.class == "Guerrier")
+        if (responseClass.class == "Guerrier")
         {
             let estweaponChoice = true;
             let arme = new Arme("Epée", 1);
             
             while (estweaponChoice)
             {
-                let response3 = await prompts({
+                let responseWeapon = await prompts({
                     type: 'text',
                     name: 'weapon',
                     message: 'Choisis ton arme \"Epée\" ou \"Massue\" ?'
                 });
                 
-                if (response3.weapon == "Epée")
+                if (responseWeapon.weapon == "Epée")
                 {
                     estweaponChoice = false;
                 }
-                else if (response3.weapon == "Massue")
+                else if (responseWeapon.weapon == "Massue")
                 {
                     arme = new Arme("Massue", 1.2);
                     estweaponChoice = false;
@@ -57,27 +57,27 @@ const prompts = require('prompts');
                 }
             }
 
-            character = new Guerrier(response.name, response.gender, arme);
+            character = new Guerrier(responseChoice.name, responseChoice.gender, arme);
             estclassChoice = false;
         }
-        else if (response2.class == "Magicien")
+        else if (responseClass.class == "Magicien")
         {
             let estweaponChoice = true;
             let arme = new Arme("Feu", 1);
 
             while (estweaponChoice)
             {
-                let response3 = await prompts({
+                let responseWeapon = await prompts({
                     type: 'text',
                     name: 'weapon',
                     message: 'Choisis ton arme \"Feu\" ou \"Foudre\" ?'
                 });
                 
-                if (response3.weapon == "Feu")
+                if (responseWeapon.weapon == "Feu")
                 {
                     estweaponChoice = false;
                 }
-                else if (response3.weapon == "Foudre")
+                else if (responseWeapon.weapon == "Foudre")
                 {
                     arme = new Arme("Foudre", 1.2);
                     estweaponChoice = false;
@@ -88,7 +88,7 @@ const prompts = require('prompts');
                 }
             }
 
-            character = new Magicien(response.name, response.gender, arme);
+            character = new Magicien(responseChoice.name, responseChoice.gender, arme);
             estclassChoice = false;
         }
         else
@@ -108,13 +108,13 @@ const prompts = require('prompts');
     
         while (estCombat)
         {
-            response = await prompts({
+            responseChoice = await prompts({
                 type: 'text',
                 name: 'choice',
                 message: 'Voulez vous \"Combattre\" ou \"Fuir\" ?',
             });
     
-            if (response.choice == "Combattre")
+            if (responseChoice.choice == "Combattre")
             {
                 ennemy.takeDamage(character.attack());
     
@@ -134,7 +134,7 @@ const prompts = require('prompts');
                     estCombat = false;
                 }
             }
-            else if (response.choice == "Fuir")
+            else if (responseChoice.choice == "Fuir")
             {
                 let nb = Math.floor(Math.random() * 100) + 1;
                 if (nb > 80)

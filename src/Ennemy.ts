@@ -16,7 +16,6 @@ export class Ennemy implements Fighter{
         let damage = Math.floor(Math.random() * 100) + 1;
         console.log('Dégat : ' + damage);
         return damage;
-
     }
 
     takeDamage(damage:number)
